@@ -1,0 +1,33 @@
+.lorem {
+  margin: 149px auto 127px;
+  font-family: 'DM Sans';
+  color: #000;
+}
+
+.lorem-title {
+  margin: 0 auto;
+  font-size: 24px;
+  line-height: 29px;
+
+  max-width: 811px;
+  text-align: center;
+}
+
+.lorem-descr {
+  margin: 32px auto 0;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+
+  max-width: 811px;
+  text-align: center;
+}
+
+/* 
+
+DRY - Do not repeat yourself
+
+KISS - keep it simple and stupid 
+
+*/

@@ -1,0 +1,35 @@
+.gallery {
+  padding: 160px 0 151px;
+  background: #ece8e5;
+
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.gallery-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.gallery-item {
+  width: 100%;
+}
+
+.gallery-item-img {
+  width: 100%;
+}
+
+.gallery-item-title {
+  font-size: 20px;
+  line-height: 25px; /* 125% */
+  margin-top: 28px;
+}
+
+.gallery-item-descr {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  margin-top: 16px;
+}

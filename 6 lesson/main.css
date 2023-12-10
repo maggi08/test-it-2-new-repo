@@ -1,0 +1,99 @@
+h1{
+  font-size: 30px;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 12px;
+}
+
+.text1{
+  font-size: 0.5rem;
+  margin-top: 0.5rem;
+}
+.text2{
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+.text3{
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+.text4{
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+.text5{
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.section1{
+  width: 100%;
+  font-size: 24px;
+}
+.section2{
+  font-size: 8px;
+}
+
+.section2 p{
+  font-size: 8em;
+}
+
+.section1{
+  background: yellow;
+  width: 50vw;
+  height: 100vh;
+}
+.section1 P{
+  width: 100%;
+}
+
+
+p{
+  color: red !important;
+}
+
+.section1 p {
+  color: blue
+}
+
+#text4id{
+  color: green !important;
+}
+
+.div1{
+  /* width: 200px; */
+  width: 100%;
+  height: 200px;
+  padding: 20px;
+  border: 10px solid black;
+  background: green;
+  margin-top: 20px;
+  /* box-sizing: content-box; */
+
+  /* width: calc(100% - 20px); */
+
+  width: calc(100% - 40px + 10vh);
+  display: flex;
+}
+.div2{
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  border: 10px solid black;
+  background: yellow;
+  margin-top: 20px;
+  box-sizing: border-box;
+  width: min(90%, 600px);
+}
+.div1 p{
+  width: calc(100% - 100px);
+}
+
+.div1 button{
+  width: 100px;
+}

@@ -1,0 +1,115 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+body{
+  background: url('./bg.avif');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.hero{
+  height: 100vh;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h1{
+  font-size: 80px;
+  width: 550px;
+  color: white;
+  background: rgba(255,255,255,0.3);
+}
+
+.hero h1::before{
+  content: '@@'
+}
+.hero h1::after{
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: black;
+  border-radius: 50%;
+}
+
+.section1{
+  padding-bottom: 120px;
+}
+
+.section1 p{
+  /* width: 200px;
+  height: 200px; */
+
+  max-width: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  min-height: 100px;
+  max-height: 200px;
+  /* overflow: scroll; */
+  overflow: auto;
+
+
+
+  /* height: 80px;; */
+  font-size: 32px;
+  color: white;
+
+  background: rgba(255, 251, 0, 0.3);
+  margin-bottom: 20px;
+
+}
+
+.section1 p:hover{
+  color: yellowgreen
+}
+.section1 p:active{
+  color: blueviolet
+}
+
+.section1 p:first-child{
+  color: black;
+}
+.section1 p:last-child{
+  color: aqua;
+}
+.section1 p:nth-child(2){
+  color: chartreuse;
+}
+.section1 p:nth-child(3){
+  color: blue;
+}
+.section1 p::selection{
+  background: rgba(255, 38, 0, 0.2);
+}
+
+.section1 p::-webkit-scrollbar{
+  background: yellow
+}
+.section1 p::first-letter{
+  font-size:80px;
+  font-weight: bold;
+}
+.section1 p::first-line{
+  font-size:80px;
+  font-weight: bold;
+}
+
+ul{
+  font-size: 24px;
+  margin-left:50px;
+  list-style-type: square;
+}
+
+ul li::marker{
+  color:rgba(255, 251, 0, 0.3);
+  font-size:50px;
+}

@@ -1,0 +1,94 @@
+@import './normalize.css';
+
+/* body {
+  background: yellow
+} */
+
+
+
+/* @import './seciton1.css';
+@import './seciton2.css';
+@import './seciton3.css'; */
+
+
+
+.div{
+  width: 100%;
+  max-width: 500px;
+  background: aqua;
+  padding: 40px;
+  position: relative;
+}
+
+.div p{
+  font-size: 32px;
+}
+
+svg{
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%) scale(2);
+  stroke: rgb(138, 216, 138);
+  /* transform: translateX(200px) rotate(45deg); */
+}
+
+.flexbox{
+  margin: 100px 0;
+  /* padding: 0 20px; */
+  width: 100%;
+  height: 400px;
+  display: flex;
+  /* flex-direction: column; */
+  /* flex-wrap: wrap-reverse; */
+  /* flex-flow: column wrap; */
+  /* background: url() no-repeat cover; */
+  border: 4px solid #ccc;
+  /* justify-content: center; */
+  /* align-items: flex-start; */
+  /* flex-wrap: wrap; */
+  /* align-content: flex-start; */
+
+  align-items: center;
+}
+
+.flex-div{
+  width: 100px;
+  /* height: 100px; */
+
+  background:rgb(138, 216, 138);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  border: 1px white dashed
+}
+.flex-div:nth-child(even){
+  /* height: 40px; */
+}
+
+@media (max-width: 768px) {
+  .div{
+    background: red;
+    padding: 16px;
+  }
+  .div p{
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .div{
+    background: blueviolet;
+  }
+}
+@media print{
+svg{
+  display: none;
+}
+}
+
+@media screen and (orientation: landscape) {
+  
+}
