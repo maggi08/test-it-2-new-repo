@@ -169,9 +169,9 @@ let clone = {}
 // console.log(user1);
 // console.log(clone);
 
-// for(let key in user1){
-//     clone[key] = user1[key]
-// }
+for(let key in user1){
+    clone[key] = user1[key]
+}
 
 // console.log(user1);
 // console.log(clone);
