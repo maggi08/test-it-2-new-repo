@@ -71,7 +71,7 @@ function sortUsersByKey(arr, key){
     return arr.sort((a,b)=> {
         if(typeof a[key] === 'string'){
             console.log(a[key] , b[key],a[key] > b[key] ? 1 : -1);
-            return a[key] < b[key] ? 1 : -1
+            return a[key] > b[key] ? 1 : -1
         }
         // console.log(a[key], b[key]);
         return a[key]-b[key]
@@ -80,4 +80,4 @@ function sortUsersByKey(arr, key){
 
 // console.log(sortUsersByAge(users))
 console.log('name', sortUsersByKey(users, 'name'))
-console.log('age', sortUsersByKey(users, 'age'))
+// console.log('age', sortUsersByKey(users, 'age'))
