@@ -22,6 +22,7 @@ let users = [
 let getUsersByGenderUnderAge = (arr, gender, age) =>{
     return arr.filter(e => e.gender === gender).filter(e => e.age < age)
 }
+
 // console.log('Males under 20 age: ', getUsersByGenderUnderAge(users,'male', 20) );
 // console.log('Males under 20 age: ', getUsersByGenderUnderAge(users,'female', 20) );
 // console.log('Males under 20 age: ', getUsersByGenderUnderAge(users,'other', 20) );
@@ -48,6 +49,7 @@ let users2 = users.map((user)=>{
 // console.log('result', result);
 
 let numbers2 = [5,1,7,23,8,9]
+
 function sortNumbers(a, b){
     console.log('sortNumbers', a, b);
     if( a > b ) return 1
@@ -55,11 +57,14 @@ function sortNumbers(a, b){
     if( a == b ) return 0
 }
 function sortNumbers2(a, b){
-    return a-b
+    return a - b
 }
+
 // console.log('inintial', numbers2);
 // console.log('default sort', numbers2.sort());
 // console.log('custom sort', numbers2.sort(sortNumbers));
+// console.log('custom sort', numbers2.sort(sortNumbers2));
+// console.log('custom sort', numbers2.sort((a,b) => a-b));
 
 function sortUsersByAge(arr){
     return arr.sort((a,b)=>{
@@ -68,16 +73,15 @@ function sortUsersByAge(arr){
 }
 
 function sortUsersByKey(arr, key){
-    return arr.sort((a,b)=> {
+    return [...arr].sort((a,b)=> {
         if(typeof a[key] === 'string'){
-            console.log(a[key] , b[key],a[key] > b[key] ? 1 : -1);
             return a[key] > b[key] ? 1 : -1
         }
         // console.log(a[key], b[key]);
-        return a[key]-b[key]
+        return a[key] - b[key]
     } )
 }
 
 // console.log(sortUsersByAge(users))
-console.log('name', sortUsersByKey(users, 'name'))
+// console.log('name', sortUsersByKey(users, 'name'))
 // console.log('age', sortUsersByKey(users, 'age'))
