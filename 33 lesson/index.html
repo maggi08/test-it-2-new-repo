@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>31 lesson</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="./main.css">
+    <style>
+      .btn{
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 24px;
+
+        border-color: transparent;
+        background: black ;
+        color: white;
+
+        font-size: 8px;
+      }
+      .btn-success{
+        background: green;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn btn-cancel">cancel</button> 
+    <!-- <button id="btn-confirm" class="btn btn-confirm">click me</button>  -->
+    <button id="show-passsword" class="btn btn-confirm">showPassword</button> 
+    <input 
+      id="myinput" 
+      type="password" 
+      value="" 
+      placeholder="Enter you password" 
+      required="true"
+    >
+    <!-- before -->
+    <ul id="ul">
+      <!-- Prepended -->
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <!-- Appended -->
+      <!-- Appended2 -->
+    </ul>
+    <!-- After -->
+
+    <div class="hello-msg" style="display: none">
+      Hello
+    </div>
+
+    <div id="myDiv" class=""></div>
+    <script src="main.js"></script>
+  </body>
+</html>
