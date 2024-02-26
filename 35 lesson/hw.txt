@@ -1,0 +1,9 @@
+function loadScript(src, callback) {
+  let script = document.createElement('script');
+  script.src = src;
+  script.onload = () => callback(null, script);
+  script.onerror = () => callback(new Error('script is not exist'));
+  document.head.append(script);
+}
+
+1) эту функцию перезаписать спомощю Промисов(Promise)
