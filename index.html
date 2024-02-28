@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .calculator {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        #display {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        button:active {
+            background-color: #2980b9;
+        }
+
+    </style>
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="setOperation('+')">+</button>
+
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="setOperation('-')">-</button>
+
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="setOperation('*')">*</button>
+
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="calculateResult()">=</button>
+            <button onclick="setOperation('/')">/</button>
+        </div>
+    </div>
+
+    <script>
+        let currentInput = '';
+        let currentOperation = '';
+        let resultDisplayed = false;
+
+        function appendToDisplay(value) {
+            if (resultDisplayed) {
+                clearDisplay();
+                resultDisplayed = false;
+            }
+            currentInput += value;
+            updateDisplay();
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            currentOperation = '';
+            updateDisplay();
+        }
+
+        function setOperation(operation) {
+            if (currentInput !== '') {
+                currentOperation = operation;
+                currentInput += ' ' + operation + ' ';
+                updateDisplay();
+            }
+        }
+
+        function calculateResult() {
+            if (currentOperation !== '' && currentInput !== '') {
+                const expression = currentInput.split(' ');
+                const num1 = parseFloat(expression[0]);
+                const operator = expression[1];
+                const num2 = parseFloat(expression[2]);
+
+                let result;
+                switch (operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        result = num1 / num2;
+                        break;
+                    default:
+                        result = 'упс';
+                }
+            
+
+                currentInput = result.toString();
+                currentOperation = '';
+                resultDisplayed = true;
+                updateDisplay();
+            }
+        }
+
+        function updateDisplay() {
+            document.getElementById('display').value = currentInput;
+        }
+
+
+    </script>
+</body>
+</html>
