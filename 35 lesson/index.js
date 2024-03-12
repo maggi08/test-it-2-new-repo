@@ -39,21 +39,21 @@ function loadScript(src, callback) {
 //     console.log(data);
 //   }
 // }
-// loadScript('./index1.js', function (data) {
-//   console.log(data);
-//   loadScript('./index2.js', () => {
-//     console.log(data);
-//     loadScript('./index3.js', function () {
-//       console.log(data);
-//       loadScript('./index4.js', function () {
-//         //  ...
-//         //  ...
-//         //  ...
-//         //  ...
-//       });
-//     });
-//   });
-// });
+loadScript('./index1.js', function (data) {
+  console.log(data);
+  loadScript('./index2.js', () => {
+    console.log(data);
+    loadScript('./index3.js', function () {
+      console.log(data);
+      loadScript('./index4.js', function () {
+        //  ...
+        //  ...
+        //  ...
+        //  ...
+      });
+    });
+  });
+});
 
 // console.log('start'); // синхронность
 // loadScript('./index1.js') // 1 // асинхронность
