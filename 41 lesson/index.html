@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>41 lesson</title>
+    <link rel="stylesheet" href="./main.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    
+    <h1>Javascript</h1>
+
+    <div>
+      <h1>Count: <span id="count">0</span></h1>
+
+      <button onclick="increment()">Click me</button>
+
+      <script>
+        let counter = 0
+        
+        function increment(){
+          let countElement = document.getElementById('count')
+          counter++
+          countElement.innerText = counter
+        }
+      </script>
+    </div>
+
+    <div id="app">
+      <h1>Count: {{ counter }}</h1>
+
+      <button @click="counter++">Click me</button>
+    </div>
+
+    <script>
+      const { createApp } = Vue // Vue.createApp
+      
+      createApp({
+        data() {
+          return {
+            counter: 0
+          }
+        }
+      }).mount('#app')
+    </script>
+
+
+
+
+    <script src="./index.js"></script>
+   
+    
+
+  </body>
+</html>
