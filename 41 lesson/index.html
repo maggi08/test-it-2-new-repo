@@ -20,8 +20,10 @@
         let counter = 0
         
         function increment(){
-          let countElement = document.getElementById('count')
           counter++
+          console.log('counter', counter);
+          
+          let countElement = document.getElementById('count')
           countElement.innerText = counter
         }
       </script>

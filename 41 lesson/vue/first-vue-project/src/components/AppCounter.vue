@@ -1,7 +1,10 @@
 <template>
-  <div class="">
-    <h2>Count: {{ counter}}</h2>
-    <button @click="counter++">Click me</button>
+  <div class="counter">
+    <button @click="decrement">-</button>
+
+    <p>Count: {{ counter }}</p> 
+
+    <button @click="increment">+</button>
   </div>
 </template>
 
@@ -11,11 +14,31 @@ export default {
     return {
       counter: 0
     }
+  },
+  methods:{
+    decrement(){
+      if(this.counter === 0) return
+      this.counter--
+    },
+    increment(){
+      if(this.counter >= 10) return
+      this.counter++
+    }
   }
-  
 }
 </script>
 
-<style >
+<style scoped>
+
+.counter{
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.counter button{
+  width: 32px;
+  height: 32px;
+}
 
 </style>
