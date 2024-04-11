@@ -5,25 +5,33 @@
     <button>submit book</button>
   </form>
 
-  <h1>Books list</h1>
+  <h1>Books list {{ bookName ? '- ' + bookName : '' }}</h1>
 
   <p>
     Has published books: <span>{{ hasPublishedBooks }}</span>
   </p>
 
-  hover = {{ hover }}
-
   <ol>
-    <li
-      v-for="(book, index) in reversedBooks"
-      :key="index"
-      class="book"
-      @mouseover="hover = index"
-      @mouseleave="hover = -1"
-    >
-      {{ book }}
-      <div v-if="hover === index" class="delete_btn" @click="deleteBook(book)">x</div>
-    </li>
+    <!-- v-bind:class="{ book__active: bookName === book, 'book_last': reversedBooks.length - 1 === index
+    }" -->
+    <!-- :class="[
+        bookName === book ? 'book__active' : '',
+        reversedBooks.length - 1 === index ? 'book__last' : ''
+      ]" -->
+    <template v-if="true">
+      <li
+        v-for="(book, index) in reversedBooks"
+        :key="index"
+        class="book"
+        :class="`${divcolor} ${bookName === book ? 'book__active' : ''} ${reversedBooks.length - 1 === index ? 'book__last' : ''}`"
+        @click="bookName = book"
+        @mouseover="hover = index"
+        @mouseleave="hover = -1"
+      >
+        {{ book }}
+        <div v-if="hover === index" class="delete_btn" @click="deleteBook(book)">x</div>
+      </li>
+    </template>
   </ol>
 </template>
 
@@ -32,6 +40,7 @@ export default {
   data() {
     return {
       bookInput: '',
+      bookName: '',
       hover: -1,
       books: ['Vue 2 - Advanced Guide', 'Vue 3 - Basic Guide', 'Vue 4 - The Mystery']
       // author: {
@@ -47,6 +56,9 @@ export default {
     },
     reversedBooks() {
       return [...this.books].reverse()
+    },
+    divcolor() {
+      return 'adsfsad;fk'
     }
   },
   methods: {
@@ -82,6 +94,16 @@ export default {
 .book:hover {
   cursor: pointer;
   background: #ccc;
+}
+.book__active {
+  background: orange;
+  color: white;
+}
+.book__first {
+  border-top: 2px solid black;
+}
+.book__last {
+  border-bottom: 2px solid black;
 }
 .delete_btn {
   height: 30px;
