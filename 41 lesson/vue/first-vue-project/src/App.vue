@@ -1,52 +1,67 @@
 <template>
+  <!-- pervyi-{{ pervyi }} vtoroi-{{ vtoroi }}
+  <two-inputs v-model:first="pervyi" v-model:second="vtoroi" />
+
+  <UiModal v-model="modalShown" /> -->
+  <!-- <UiModal :modelValue="modalShown" @update:modelValue="(v) => (modalShown = v)" /> -->
+  <!-- <UiModal :modelValue="modalShown" @update:modelValue="(event) => (modalShown = event)" /> -->
+  <!-- <UiModal :modelValue="modalShown" @update:modelValue="modalShown = $event" /> -->
+  <!-- <UiModal :modelValue="modalShown" @update:modelValue="onChangeModalView" /> -->
+  <!-- 
+  <button @click="modalShown = true">Show Modal</button>
+  <form action="">
+    Form of Login
+
+    <UiInput v-model="loginForm.email" label="Email" />
+    <UiInput v-model="loginForm.password" label="Passowrd" />
+    <button @click="reset" type="button">reset</button>
+  </form>
+
+  <form action="" style="margin-top: 50px">
+    Form of Registration
+    <UiInput v-model="registrationForm.email" label="Email" />
+    <UiInput v-model="registrationForm.password" label="Password" />
+    <UiInput v-model="registrationForm.password2" label="Repeat password" />
+  </form> -->
+
   <MyUsers />
-
-  <!-- <input type="text" placeholder="some text" @input="onInput" />
-  <div>
-    My text
-    <p id="myText"></p>
-  </div>
-
-  <input v-model="myText2" type="text" placeholder="some text" />
-  <div>
-    My text 2:
-    <p>{{ myText2 }}</p>
-  </div> -->
-
-  <!-- selected = {{ selected }}
-  <br /> -->
-
-  <!-- <label>
-    First
-
-    <input v-model="selected" type="radio" value="first" />
-  </label>
-  <br />
-
-  <label>
-    Second
-
-    <input v-model="selected" type="radio" value="second" />
-  </label> -->
 </template>
 
 <script>
-// import AppCounter from './components/AppCounter.vue'
-// import PublishBooks from './components/PublishBooks.vue'
 import MyUsers from './components/MyUsers.vue'
+// import TwoInputs from './components/TwoInputs.vue'
+// import UiInput from './components/ui/UiInput.vue'
+// import UiModal from './components/ui/UiModal.vue'
 
 export default {
   components: {
-    // AppCounter,
-    // PublishBooks,
     MyUsers
+    // UiInput,
+    // UiModal,
+    // TwoInputs
   },
   data() {
     return {
       myText2: 'Hello',
-      selected: 'Nothing'
+      selected: 'Nothing',
+      loginForm: {
+        email: 'test@email.com',
+        password: 'testtestest'
+      },
+      registrationForm: {
+        email: '',
+        firstName: '',
+        lastName: '',
+        password: '',
+        password2: ''
+      },
+      modalShown: false,
+
+      pervyi: '1',
+      vtoroi: '2'
     }
   },
+  mounted() {},
   computed: {},
   methods: {
     onInput(event) {
@@ -54,6 +69,20 @@ export default {
       let { value } = event.target
 
       document.getElementById('myText').innerText = value
+    },
+    onChangeInput(value) {
+      console.log('onChangeInput', value)
+      this.loginForm.email = value
+    },
+    reset() {
+      this.loginForm = {
+        email: '',
+        password: ''
+      }
+    },
+    onChangeModalView(value) {
+      this.modalShown = value
+      console.log('onChangeModalView', value)
     }
   }
 }

@@ -4,6 +4,27 @@
   <div id="usersContainer" class="users">
     <h3>Users</h3>
 
+    <h4 style="text-align: center">CEOs of company</h4>
+
+    <div class="ceos-container">
+      <MyUser
+        v-if="selectedCEO"
+        :num="777"
+        :img="selectedCEO.avatar"
+        :name="selectedCEO.first_name + ' ' + selectedCEO.last_name"
+        isCEO
+        style="width: 30%"
+      />
+      <MyUser
+        v-if="selectedCTO"
+        :num="777"
+        :img="selectedCTO.avatar"
+        :name="selectedCTO.first_name + ' ' + selectedCTO.last_name"
+        isCTO
+        style="width: 30%"
+      />
+    </div>
+
     <div class="users-cont">
       <MyUser
         v-for="(user, index) in users"
@@ -11,7 +32,14 @@
         :num="index + 1"
         :img="user.avatar"
         :name="user.first_name + ' ' + user.last_name"
+        :isCEO="selectedCEO && user.first_name === selectedCEO.first_name"
+        :isCTO="selectedCTO && user.first_name === selectedCTO.first_name"
+        prop-f="successs"
+        @onTriggerUser="onTriggerUser"
+        @onSelectCEO="onSelectCEO(index, user)"
+        @onSelectCTO="selectedCTO = user"
       />
+      <!-- :isCEO="user.first_name === 'Janet'" -->
     </div>
 
     <UiSpinner v-if="loading" />
@@ -34,13 +62,28 @@ export default {
       currentPage: 1,
       totalPage: 0,
       users: [],
-      loading: true
+      loading: true,
+      selectedCEO: null,
+      selectedCTO: null,
+      nurs: {
+        number: 777,
+        img: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRcjAdfSOeqLTW4OZLYqBTCuPABsa49PxNFUg3Nofrz8WpUxXwq',
+        name: 'Nursultan Nazarbayev'
+      }
     }
   },
   mounted() {
     this.fetchUsers()
   },
   methods: {
+    onSelectCEO(idx, user) {
+      console.log('onSelectCEO', idx, user)
+      this.selectedCEO = { ...user, index: 'selectedCEO' }
+    },
+    onTriggerUser(userName) {
+      console.log('onTriggerUser', userName)
+      this.selectedCEO = userName
+    },
     async fetchUser(id) {
       let response = await fetch(`${this.BASE_URL}users/${id}`)
       let results = await response.text()
@@ -50,7 +93,7 @@ export default {
       this.loading = true
 
       let params = {
-        per_page: 2,
+        per_page: 12,
         page: this.currentPage
       }
 
@@ -78,6 +121,11 @@ export default {
 </script>
 
 <style scoped>
+.ceos-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 .users-cont {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
