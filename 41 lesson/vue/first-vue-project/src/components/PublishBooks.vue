@@ -11,32 +11,46 @@
     Has published books: <span>{{ hasPublishedBooks }}</span>
   </p>
 
-  <ol>
-    <!-- v-bind:class="{ book__active: bookName === book, 'book_last': reversedBooks.length - 1 === index
-    }" -->
-    <!-- :class="[
-        bookName === book ? 'book__active' : '',
-        reversedBooks.length - 1 === index ? 'book__last' : ''
-      ]" -->
-    <template v-if="true">
-      <li
-        v-for="(book, index) in reversedBooks"
-        :key="index"
-        class="book"
-        :class="`${divcolor} ${bookName === book ? 'book__active' : ''} ${reversedBooks.length - 1 === index ? 'book__last' : ''}`"
-        @click="bookName = book"
-        @mouseover="hover = index"
-        @mouseleave="hover = -1"
-      >
-        {{ book }}
-        <div v-if="hover === index" class="delete_btn" @click="deleteBook(book)">x</div>
-      </li>
+  <UiList :list="reversedBooks">
+    <template #item="{ title, num }">
+      <p style="font-size: 32px; color: red">{{ num }} - {{ title }}</p>
     </template>
-  </ol>
+  </UiList>
+
+  <UiList :list="['white', 'blue', 'red', 'black', 'gray']" style="margin-top: 64px">
+    <template #item="{ title, num }">
+      <p
+        style="font-size: 24px; background: gray"
+        :style="`color: ${title === 'gray' ? 'white' : title};`"
+      >
+        {{ num }} - {{ title }}
+      </p>
+    </template>
+  </UiList>
+
+  <!-- <ol>
+    <li
+      v-for="(book, index) in reversedBooks"
+      :key="index"
+      class="book"
+      :class="`${divcolor} ${bookName === book ? 'book__active' : ''} ${reversedBooks.length - 1 === index ? 'book__last' : ''}`"
+      @click="bookName = book"
+      @mouseover="hover = index"
+      @mouseleave="hover = -1"
+    >
+      {{ book }}
+      <div v-if="hover === index" class="delete_btn" @click="deleteBook(book)">x</div>
+    </li>
+  </ol> -->
 </template>
 
 <script>
+import UiList from '@/components/ui/UiList.vue'
+
 export default {
+  components: {
+    UiList
+  },
   data() {
     return {
       bookInput: '',
@@ -82,36 +96,4 @@ export default {
 }
 </script>
 
-<style>
-.book {
-  height: 30px;
-  font-size: 20px;
-  margin: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.book:hover {
-  cursor: pointer;
-  background: #ccc;
-}
-.book__active {
-  background: orange;
-  color: white;
-}
-.book__first {
-  border-top: 2px solid black;
-}
-.book__last {
-  border-bottom: 2px solid black;
-}
-.delete_btn {
-  height: 30px;
-  width: 30px;
-  font-size: 20px;
-  cursor: pointer;
-  background: red;
-  display: flex;
-  justify-content: center;
-}
-</style>
+<style></style>

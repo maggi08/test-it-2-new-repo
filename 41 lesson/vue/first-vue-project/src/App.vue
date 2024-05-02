@@ -1,40 +1,40 @@
 <template>
-  <!-- pervyi-{{ pervyi }} vtoroi-{{ vtoroi }}
-  <two-inputs v-model:first="pervyi" v-model:second="vtoroi" />
+  <DefaultLayout>
+    <template v-slot:header>
+      <h1>LOGO</h1>
+      <nav>
+        <ul style="display: flex; margin-left: 100px">
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li><a href="">3</a></li>
+          <li><a href="">4</a></li>
+        </ul>
+      </nav>
+    </template>
 
-  <UiModal v-model="modalShown" /> -->
-  <!-- <UiModal :modelValue="modalShown" @update:modelValue="(v) => (modalShown = v)" /> -->
-  <!-- <UiModal :modelValue="modalShown" @update:modelValue="(event) => (modalShown = event)" /> -->
-  <!-- <UiModal :modelValue="modalShown" @update:modelValue="modalShown = $event" /> -->
-  <!-- <UiModal :modelValue="modalShown" @update:modelValue="onChangeModalView" /> -->
-  <!-- 
-  <button @click="modalShown = true">Show Modal</button>
-  <form action="">
-    Form of Login
+    <PublishBooks />
 
-    <UiInput v-model="loginForm.email" label="Email" />
-    <UiInput v-model="loginForm.password" label="Passowrd" />
-    <button @click="reset" type="button">reset</button>
-  </form>
+    <MyUsers />
 
-  <form action="" style="margin-top: 50px">
-    Form of Registration
-    <UiInput v-model="registrationForm.email" label="Email" />
-    <UiInput v-model="registrationForm.password" label="Password" />
-    <UiInput v-model="registrationForm.password2" label="Repeat password" />
-  </form> -->
-
-  <MyUsers />
+    <template #footer="slotProps">
+      <h1>This is my Footer</h1>
+      <h2>{{ slotProps.message }}</h2>
+    </template>
+  </DefaultLayout>
 </template>
 
 <script>
+import DefaultLayout from './layouts/DefaultLayout.vue'
 import MyUsers from './components/MyUsers.vue'
+import PublishBooks from './components/PublishBooks.vue'
 // import TwoInputs from './components/TwoInputs.vue'
 // import UiInput from './components/ui/UiInput.vue'
 // import UiModal from './components/ui/UiModal.vue'
 
 export default {
   components: {
+    DefaultLayout,
+    PublishBooks,
     MyUsers
     // UiInput,
     // UiModal,

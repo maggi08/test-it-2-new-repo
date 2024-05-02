@@ -7,8 +7,10 @@
     <img class="user-avatar" :src="img" alt="" />
     <p class="user-name">{{ num }} {{ upperName }}</p>
 
-    <button @click="$emit('onSelectCEO')">Select new CEO</button>
-    <button @click="$emit('onSelectCTO')">Select new CTO</button>
+    <div class="" style="display: flex">
+      <UiButton @click.stop="$emit('onSelectCEO')">Select new CEO</UiButton>
+      <UiButton @click.stop="$emit('onSelectCTO')">Select new CTO</UiButton>
+    </div>
   </div>
   <UiModal v-model="showModal">
     <p>User name is - {{ upperName }}</p>
@@ -19,6 +21,7 @@
 </template>
 
 <script>
+import UiButton from '@/components/ui/UiButton.vue'
 import UiModal from '@/components/ui/UiModal.vue'
 import UiInput from '@/components/ui/UiInput.vue'
 
@@ -30,6 +33,7 @@ export default {
   //   num: Number || String
   // }
   components: {
+    UiButton,
     UiModal,
     UiInput
   },
@@ -73,6 +77,9 @@ export default {
     }
   },
   methods: {
+    onModalClick() {
+      console.log('onModalClick')
+    },
     onClick() {
       this.$emit('onTriggerUser', this.name)
     },

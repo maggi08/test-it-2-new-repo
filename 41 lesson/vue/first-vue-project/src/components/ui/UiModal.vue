@@ -1,6 +1,6 @@
 <template>
   <div v-if="modelValue" class="ui-modal" @click="closeModal">
-    <div class="ui-modal-content" @click="onClick">
+    <div class="ui-modal-content" @click.stop>
       <slot></slot>
     </div>
   </div>
@@ -16,9 +16,6 @@ export default {
     }
   },
   methods: {
-    onClick() {
-      console.log('content clicked')
-    },
     closeModal() {
       console.log('ui-modal clicked')
       this.$emit('update:modelValue', false)
